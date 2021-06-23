@@ -1,4 +1,5 @@
 # Class for Node. Has data and link attributes
+
 class Node:
 	def __init__(self, data, NextNode = None):
 		self.data = data
@@ -83,15 +84,26 @@ class LinknedList:
 		PrevNode.NextNode = CurrentNode.NextNode
 		del(CurrentNode)
 		del(p)
-
-
-
-
+# Reversing the Linked List
+	def reverse(self):
+		
+		CurrentNode = self.head
+		PrevNode = None
+		while(CurrentNode != None):
+			NextNode = CurrentNode.NextNode
+			CurrentNode.NextNode = PrevNode
+			PrevNode = CurrentNode
+			CurrentNode = NextNode
+		self.head = PrevNode
+	
 
 li = LinknedList()
 li.InsertAtEnd(1)
 li.InsertAtEnd(3)
 li.InsertAtBeg(0)
 li.InsertAt(2, 2)
+li.InsertAt(1, 0.5)
 li.DeleteAt(2)
+li.PrintList()
+li.reverse()
 li.PrintList()
